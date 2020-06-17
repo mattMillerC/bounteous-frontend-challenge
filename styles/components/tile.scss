@@ -1,0 +1,50 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  background-color: $white;
+  border-radius: .8rem;
+  @include box-shadow(.85);
+  
+  .tile__image {
+    height: 25rem;
+    border-radius: .8rem .8rem 0 0;
+  }
+  .tile__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 3rem 1.5rem;
+
+    .tile__logo {
+      position: relative;
+      top: -4.5rem;
+      height: 9rem; // Forced height so that the offset always works
+      margin-left: .5rem;
+      background-color: $white;
+      border-radius: .5rem;
+      @include box-shadow(.35);
+    }
+    .tile__button {
+      margin-top: 1rem;
+    }
+    .tile__content-inner {
+      width: 100%;
+      margin-top: -4.5rem; // Adjusting position for offset
+      padding: 1rem;
+
+      .tile__header {
+        margin-top: 1rem;
+        @include font--large;
+      }
+      .tile__text {
+        @include font--medium;
+      }
+      .tile__footer {
+        @include font--small;
+      }
+    }
+  }
+}

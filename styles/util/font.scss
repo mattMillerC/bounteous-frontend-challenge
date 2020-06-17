@@ -1,0 +1,34 @@
+@mixin font-family-helvetica {
+  font-family: Helvetica, sans-serif
+}
+
+@mixin font {
+  @include font-family-helvetica;
+  color: $dark-grey;
+  line-height: 1.4;
+}
+
+@mixin font--xsmall {
+  @include font;
+  font-size: $ft-xsm;
+}
+
+@mixin font--small {
+  @include font;
+  font-size: $ft-sm;
+}
+
+@mixin font--medium {
+  @include font;
+  font-size: $ft-md;
+}
+
+@mixin font--large {
+  @include font;
+  font-size: $ft-lg;
+}
+
+@mixin font--xlarge {
+  @include font;
+  font-size: $ft-xlg;
+}
