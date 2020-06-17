@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const AutoPrefixer = require("autoprefixer");
 
 module.exports = {
   plugins: [
@@ -37,8 +38,13 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
+          // Extract JS to CSS file
           MiniCssExtractPlugin.loader,
+          // Translate CSS to JS (resolving imports)
           'css-loader',
+          // Add browser prefixes
+          { loader: 'postcss-loader', options: { plugins: [ AutoPrefixer ] } },
+          // Compile SCSS to CSS
           'sass-loader',
         ],
       },
