@@ -1,5 +1,9 @@
-@mixin box-shadow($opacity) {
-  -webkit-box-shadow: 0rem 0rem .5rem 0rem rgba(0,0,0,$opacity);
-  -moz-box-shadow: 0rem 0rem .5rem 0rem rgba(0,0,0,$opacity);
+@mixin black-box-shadow($opacity) {
   box-shadow: 0rem 0rem .5rem 0rem rgba(0,0,0,$opacity);
+}
+
+@mixin psychedelic-box-shadow() {
+  box-shadow:
+    -1rem 0 8rem $magenta,
+    1rem 0 8rem $cyan;
 }
