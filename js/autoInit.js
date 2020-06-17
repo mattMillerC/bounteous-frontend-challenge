@@ -16,16 +16,62 @@ const componentRegistry = {
  * found in the componentRegistry defined above.
  * @param {Element} root - The root HTML Element under which components will be found and initalized.
  */
-export default function autoInitializeComponents(root) {
-  const autoInitComps = root.querySelectorAll(`[${AUTO_INIT_PROP}]`);
+function initializeComponents(root) {
+  const autoInitComps = Array.from(root.querySelectorAll(`[${AUTO_INIT_PROP}]`));
 
-  for (const initComp of Array.from(autoInitComps)) {
-    const compKey = initComp.getAttribute(AUTO_INIT_PROP);
-    if (compKey && componentRegistry[compKey]) {
-      const initFunc = componentRegistry[compKey]
-      initFunc(initComp);
-    } else {
-      console.error("Component definition not found for auto-init: " + compKey);
+  // We also want to check the root element itself
+  autoInitComps.push(root);
+
+  for (const initComp of autoInitComps) {
+    // Make sure we haven't already intialized this component
+    if (!initComp.hasInit) {
+      const compKey = initComp.getAttribute(AUTO_INIT_PROP);
+      if (compKey && componentRegistry[compKey]) {
+        const initFunc = componentRegistry[compKey];
+        initComp.hasInit = true;
+        initFunc(initComp);
+      } else {
+        console.error("Component definition not found for auto-init: " + compKey);
+      }
     }
+  }
+}
+
+/**
+ * Performs initial check for component auto-init and sets up
+ * a MutationObserver to intialize future components added to the DOM.
+ */
+function setupAutoInit() {
+  initializeComponents(document.body);
+
+  const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      for (const addedNode of mutation.addedNodes) {
+        // Checking that addedNode is an element and not a textNode
+        if (addedNode.querySelectorAll) {
+          initializeComponents(addedNode);
+        }
+      }
+    })
+  });
+  observer.observe(document.body, {
+    subtree: true,
+    childList:true
+  });
+}
+
+/**
+ * Waits for the DOM to load before setting up DOM watch logic for
+ * auto-init components.
+ */
+export default function autoInitWatch() {
+  // Check if DOM is already ready. If so initialize components
+  if (document.readyState !== "loading") {
+    setupAutoInit();
+
+  // Otherwise, initialize components when ready
+  } else {
+    document.addEventListener("DOMContentLoaded", setupAutoInit);
   }
 }

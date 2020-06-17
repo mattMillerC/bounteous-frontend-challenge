@@ -4,6 +4,6 @@
 
 @mixin psychedelic-box-shadow() {
   box-shadow:
-    -1rem 0 8rem $magenta,
-    1rem 0 8rem $cyan;
+    -1rem 0 4rem $magenta,
+    1rem 0 4rem $cyan;
 }

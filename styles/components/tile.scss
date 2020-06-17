@@ -24,6 +24,7 @@
       top: -4.5rem;
       height: 9rem; // Forced height so that the offset always works
       margin-left: .5rem;
+      margin-bottom: -4.5rem; // Removing empty space below caused by offset
       background-color: $white;
       border-radius: .5rem;
       @include black-box-shadow(.35);
@@ -33,7 +34,6 @@
     }
     .tile__content-inner {
       width: 100%;
-      margin-top: -4.5rem; // Adjusting position for offset
       padding: 1rem;
 
       .tile__header {

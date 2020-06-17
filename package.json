@@ -11,7 +11,10 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@storybook/html": "^5.3.19",
     "autoprefixer": "^9.8.0",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.6.0",
@@ -29,6 +32,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "storybook": "start-storybook -p 45749",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [
