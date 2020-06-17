@@ -1,0 +1,32 @@
+{
+  "name": "bounteous-frontend-challenge",
+  "version": "1.0.0",
+  "description": "A frontend challenge project.",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.2",
+    "css-loader": "^3.6.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2",
+    "storybook": "^5.3.19",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattMillerC/bounteous-frontend-challenge.git"
+  },
+  "author": "Matt C. Miller",
+  "license": "ISC"
+}
