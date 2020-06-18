@@ -7,11 +7,11 @@ module.exports = merge(common, {
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./dist",
-    https: true,
-    host: '0.0.0.0',
-    port: 443,
-    public: 'ec2-3-128-50-114.us-east-2.compute.amazonaws.com',
-    key: fs.readFileSync('/home/ubuntu/keys/https.key'),
-    cert: fs.readFileSync('/home/ubuntu/keys/https.crt'),
+    // https: true,
+    // host: '0.0.0.0',
+    // port: 443,
+    // public: 'ec2-3-128-50-114.us-east-2.compute.amazonaws.com',
+    // key: fs.readFileSync('/home/ubuntu/keys/https.key'),
+    // cert: fs.readFileSync('/home/ubuntu/keys/https.crt'),
   },
 });

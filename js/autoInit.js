@@ -21,7 +21,9 @@ function initializeComponents(root) {
   const autoInitComps = Array.from(root.querySelectorAll(`[${AUTO_INIT_PROP}]`));
 
   // We also want to check the root element itself
-  autoInitComps.push(root);
+  if (root.hasAttribute(AUTO_INIT_PROP)) {
+    autoInitComps.push(root);
+  }
 
   for (const initComp of autoInitComps) {
     // Make sure we haven't already intialized this component
