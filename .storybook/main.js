@@ -4,6 +4,9 @@ module.exports = {
   // Registering stories
   stories: ["./stories/**/*.stories.[tj]s"],
 
+  // Registering addons
+  addons: ["@storybook/addon-a11y", "@storybook/addon-viewport"],
+
   // Adjusting the webpack config for storybook to include sass compilation
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
@@ -11,8 +14,6 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../'),
     });
-
-    // Return the altered config
     return config;
   },
 };

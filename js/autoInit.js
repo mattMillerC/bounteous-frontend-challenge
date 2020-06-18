@@ -5,6 +5,7 @@ const AUTO_INIT_PROP = "auto-init"
 /**
  * Registry of component functionality. Maps the auto-init key
  * to the functionality to be initialized in the component.
+ * Add new component definitions here!
  */
 const componentRegistry = {
   "tile": tileInit
@@ -44,6 +45,7 @@ function initializeComponents(root) {
 function setupAutoInit() {
   initializeComponents(document.body);
 
+  // Observe changes to the DOM and initialize any components that are added
   const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -66,12 +68,16 @@ function setupAutoInit() {
  * auto-init components.
  */
 export default function autoInitWatch() {
-  // Check if DOM is already ready. If so initialize components
-  if (document.readyState !== "loading") {
-    setupAutoInit();
+  // Only setup the autoInit watch once in case this gets called twice.
+  if (!window.autoInitWatching) {
+    window.autoInitWatching = true;
+    // Check if DOM is already ready. If so initialize components
+    if (document.readyState !== "loading") {
+      setupAutoInit();
 
-  // Otherwise, initialize components when ready
-  } else {
-    document.addEventListener("DOMContentLoaded", setupAutoInit);
+    // Otherwise, initialize components when ready
+    } else {
+      document.addEventListener("DOMContentLoaded", setupAutoInit);
+    }
   }
 }

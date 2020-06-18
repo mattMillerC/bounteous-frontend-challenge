@@ -12,6 +12,8 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.10.2",
+    "@storybook/addon-a11y": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
     "@storybook/html": "^5.3.19",
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
